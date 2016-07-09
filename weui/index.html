@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>my first dialog</title>
+
+    <link rel="stylesheet" href="css/weui.min.css">
+    <style>
+        header{
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .option{
+            padding: 20px 10px 0;
+            margin: 0 auto;
+        }
+        button.weui_btn, input.weui_btn{
+            width: 49%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>基于WEUI和JQuery的alert框和confirm框</h1>
+</header>
+<div class="weui_cells weui_cells_form">
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label" for="title">标题</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="text"  name="title" id="title">
+        </div>
+    </div>
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label" for="content">内容</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" type="text"  name="content" id="content">
+        </div>
+    </div>
+</div>
+
+
+
+<div class="option">
+    <button type="button" class="weui_btn weui_btn_plain_default alert">alert</button>
+    <button type="button" class="weui_btn weui_btn_primary confirm">confirm</button>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+
+<script>
+    $('.alert').on('click',function () {
+        var title=$('[name="title"]').val();
+        var content=$('[name="content"]').val();
+        msg.alert(content,title,function (isOk) {
+            //在这里执行确定后的操作
+            if(isOk){console.log(isOk)}
+        })
+    });
+    $('.confirm').on('click',function () {
+        var title=$('[name="title"]').val();
+        var content=$('[name="content"]').val();
+        msg.confirm(content,title,function (isOk) {
+            if(isOk){
+                //在这里执行确定后的操作
+                console.log(isOk)
+            }else {
+                //在这里执行取消后的操作
+                console.log(isOk)
+            }
+        })
+    })
+</script>
+</body>
+</html>
